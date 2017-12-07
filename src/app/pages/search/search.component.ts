@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import Movie from '../../classes/movie';
 import { CoolLocalStorage } from 'angular2-cool-storage';
 
 @Component({
@@ -21,7 +20,6 @@ export class SearchComponent {
   }
 
   public updateCollection($event): void {
-    console.log($event);
     const movie = $event.option;
     this.myCollection[movie.imdbID] = movie;
     this._updateLocalStorage()

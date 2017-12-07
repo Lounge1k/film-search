@@ -8,10 +8,6 @@ import { RestClientService } from './core/rest-client.service';
 })
 export class AppComponent {
   public title: string;
-  constructor(private _restCLient: RestClientService) {}
-  public showMovie() {
-    this._restCLient.getMovie(this.title).subscribe((res) => {
-      console.log(res);
-    });
-  }
+  constructor() {}
+
 }

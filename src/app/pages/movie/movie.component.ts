@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RestClientService } from '../../core/rest-client.service';
 import { ActivatedRoute } from '@angular/router';
 import { CoolLocalStorage } from 'angular2-cool-storage';
-import Movie from '../../classes/movie';
 import MovieFull from '../../classes/movie-full';
 
 @Component({

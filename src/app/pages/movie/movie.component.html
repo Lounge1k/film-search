@@ -1,0 +1,21 @@
+<div class="movie-page" *ngIf="movieInfo">
+  <div class="movie-poster">
+    <div class="buttons">
+      <button type="button" mat-button routerLink="/search">← Back</button>
+      <button type="button" *ngIf="!myCollection[movieInfo.imdbID]" class="add" mat-button (click)="addToCollection(movieInfo)">add</button>
+      <button type="button" *ngIf="myCollection[movieInfo.imdbID]" class="remove" mat-button (click)="removeFromCollection(movieInfo)">remove</button>
+    </div>
+
+    <img src="{{movieInfo.poster}}"/>
+  </div>
+  <table class="movie-info" cellspacing="0">
+    <tr *ngFor="let key of keys">
+      <td>{{key}}</td>
+      <td *ngIf="key === 'poster' || key === 'website'"><a href="{{movieInfo[key]}}" target="_blank">link</a></td>
+      <td *ngIf="key !== 'poster' && key !== 'website'">{{movieInfo[key]}}</td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="error">
+  Oops! There is an error message {{error}}
+</div>

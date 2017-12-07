@@ -1,0 +1,35 @@
+.autocomplete {
+  width: 100%;
+  &-search {
+    width: 100%;
+    line-height: 20px;
+    font-size: 16px;
+    outline: none;
+  }
+  &-wrap {
+    height: 65px;
+    line-height: 65px;
+  }
+  &-option {
+    display: flex;
+    justify-content: space-between;
+    &-poster {
+      height: 60px;
+      width: 30px;
+      margin-right: 20px;
+    }
+    &-title, &-year {
+      margin-right: 20px;
+    }
+    &-add {
+      .add-button {
+        padding: 5px;
+        background-color: lawngreen;
+        color: white;
+        font-size: 16px;
+        min-width: unset;
+        line-height: normal;
+      }
+    }
+  }
+}

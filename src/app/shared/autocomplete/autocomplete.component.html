@@ -1,0 +1,16 @@
+<div class="autocomplete">
+  <input type="text" placeholder="search a movie..." class="autocomplete-search" aria-label="Number" matInput (ngModelChange)="getMovies($event)"
+         [ngModel]="req" [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option class="autocomplete-wrap" *ngFor="let option of options" [value]="option" [routerLink]="['/movie', option.imdbID]">
+      <div class="autocomplete-option">
+        <img class="autocomplete-option-poster" src="{{option.poster}}"/>
+        <div class="autocomplete-option-title">{{option.title}}</div>
+        <div class="autocomplete-option-year">{{option.year}}</div>
+        <div class="autocomplete-option-add">
+          <button type="button" class="add-button" *ngIf="!myCollection[option.imdbID]" (click)="sendToCollection($event, option)" mat-button>add</button>
+        </div>
+      </div>
+    </mat-option>
+  </mat-autocomplete>
+</div>

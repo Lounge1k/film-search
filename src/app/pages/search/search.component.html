@@ -1,0 +1,19 @@
+<div class="search-page">
+  <app-autocomplete (onCollectionUpdate)="updateCollection($event)"></app-autocomplete>
+  <h1>Your collection <span *ngIf="myCollectionKeys.length === 0">is empty</span></h1>
+  <div class="search-page__collection">
+    <div *ngFor="let id of myCollectionKeys">
+      <a [routerLink]="['/movie', id]" class="search-page__collection--card">
+        <button mat-button type="button" (click)="removeFromCollection($event, id)" class="remove">remove</button>
+        <img src="{{myCollection[id].poster}}"/>
+        <div class="search-page__collection--card__overlay">
+          <div class="search-page__collection--card__overlay--text">
+            <div class="search-page__collection--card__overlay--text__title">{{myCollection[id].title}}</div>
+            <div class="search-page__collection--card__overlay--text__year">{{myCollection[id].year}}</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+

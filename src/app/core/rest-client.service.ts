@@ -18,6 +18,7 @@ export class RestClientService {
     private _httpClient: HttpClient
   ) {}
 
+  //get movies list from server
   public getMovie(title: string): Observable<Movie[]> {
     return this._httpClient
       .get(this._url + `s=${title}`)
@@ -37,6 +38,7 @@ export class RestClientService {
       })
   }
 
+  //get movie full info from server
   public getMovieById(id: string): Observable<MovieFull> {
     return this._httpClient
       .get(this._url + `i=${id}`)

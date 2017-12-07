@@ -9,8 +9,10 @@ import Movie from '../../classes/movie';
   styleUrls: ['./autocomplete.component.scss']
 })
 export class AutocompleteComponent {
-  public req: string;
+  //list of movies from server
   public options: Movie[];
+
+  //list of added movies
   public myCollection;
 
   @Output()
@@ -23,8 +25,9 @@ export class AutocompleteComponent {
     this.myCollection = this._localStorageService.getObject('collection') || {};
   }
 
+  //Get movies from server
+  //TODO add debounce time
   public getMovies(e): void {
-    // TODO add debounce time
     this._restClient.getMovie(e).subscribe(
       (res: Movie[]) => {
         this.options = res;
@@ -35,6 +38,7 @@ export class AutocompleteComponent {
     )
   }
 
+  //Send add event to parent component
   public sendToCollection(e, option: Movie): void {
     e.stopPropagation();
     this.onCollectionUpdate.emit({option});

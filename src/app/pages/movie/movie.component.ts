@@ -11,10 +11,19 @@ import MovieFull from '../../classes/movie-full';
 })
 
 export class MovieComponent implements OnInit {
+  //movie id
   private _id: string;
+
+  //full movie info
   public movieInfo: MovieFull;
+
+  //list of full movie proprties name
   public keys: string[];
+
+  //error
   public error: Error;
+
+  //list of added movies
   public myCollection;
 
   constructor(
@@ -32,16 +41,19 @@ export class MovieComponent implements OnInit {
     this._getMovie();
   }
 
+  //add movie to collection
   public addToCollection(movieInfo: MovieFull): void {
     this.myCollection[movieInfo.imdbID] = movieInfo;
     this._localStorage.setObject('collection', this.myCollection);
   }
 
+  //remove movie from collection
   public removeFromCollection(movieInfo: MovieFull): void {
     delete this.myCollection[movieInfo.imdbID];
     this._localStorage.setObject('collection', this.myCollection);
   }
 
+  //get info about movie
   private _getMovie(): void {
     this._restClient.getMovieById(this._id).subscribe(
       (res: MovieFull) => {
